@@ -8,6 +8,10 @@ const BhogaSchedule = require("../models/bhogaSchedule");
 const router = express.Router();
 const JWT_SECRET = process.env.JWT_SECRET || "your_jwt_secret";
 
+router.post("/", async (req, res) => {
+  res.json({ message: "welcome to sadhna" });
+});
+
 router.post("/register", requireAuth, async (req, res) => {
   const { name, email, password, adminId } = req.body;
   try {
