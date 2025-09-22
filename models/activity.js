@@ -26,6 +26,7 @@ const ActivitySchema = new mongoose.Schema(
     },
     date: { type: String, required: true }, // ISO string YYYY-MM-DD
     mangalaAarti: { type: Boolean, default: false },
+    mangalaAartiReason: { type: String, default: "" },
     japaRounds: { type: Number, default: 0 },
     lectureDuration: { type: Number, default: 0 },
     lectureDesciption: { type: String, default: "" },
