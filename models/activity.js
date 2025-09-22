@@ -7,6 +7,8 @@ const ContactSchema = new mongoose.Schema(
     phone: String,
     email: String,
     addedDate: String,
+    status: String,
+    attended: Boolean,
   },
   { _id: false }
 );
