@@ -1,17 +1,15 @@
 const mongoose = require("mongoose");
 
-const ContactSchema = new mongoose.Schema(
-  {
-    id: String,
-    name: String,
-    phone: String,
-    email: String,
-    addedDate: String,
-    status: String,
-    attended: Boolean,
-  },
-  { _id: false }
-);
+const ContactSchema = new mongoose.Schema({
+  // id: {
+  //   type: mongoose.Schema.Types.ObjectId,
+  //   ref: "User",
+  // },
+  name: String,
+  phone: String,
+  email: String,
+  addedDate: String,
+});
 
 const ActivitySchema = new mongoose.Schema(
   {
