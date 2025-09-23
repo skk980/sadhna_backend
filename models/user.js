@@ -5,6 +5,7 @@ const UserSchema = new mongoose.Schema({
   email: { type: String, unique: true, required: true },
   password: String,
   role: { type: String, enum: ["admin", "user"], default: "user" },
+  isBaseMember: { type: Boolean, required: true, default: false },
   adminId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "User", // Admin user reference

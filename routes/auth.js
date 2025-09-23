@@ -13,7 +13,7 @@ router.post("/", async (req, res) => {
 });
 
 router.post("/register", requireAuth, async (req, res) => {
-  const { name, email, password, adminId } = req.body;
+  const { name, email, password, adminId, isBaseMember } = req.body;
   try {
     let user = await User.findOne({ email });
     if (user) return res.status(409).json({ message: "User already exists" });
@@ -38,6 +38,7 @@ router.post("/register", requireAuth, async (req, res) => {
       password: hashedPassword,
       role,
       adminId: assignedAdminId, // assigned only when role:'user'
+      isBaseMember: isBaseMember || false,
     });
 
     await user.save();
@@ -86,7 +87,9 @@ router.get("/api/users", requireAuth, async (req, res) => {
   const filter = { role: "user" };
 
   try {
-    const users = await User.find(filter).select("_id name email role");
+    const users = await User.find(filter).select(
+      "_id name email role isBaseMember"
+    );
     res.json({ users });
   } catch (error) {
     res
